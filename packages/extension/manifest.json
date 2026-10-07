@@ -1,0 +1,86 @@
+{
+  "manifest_version": 3,
+  "name": "OmniPost - 多平台一键发布助手",
+  "version": "0.1.0",
+  "description": "本地优先、草稿优先的多平台一键发布扩展。支持微博、小红书、B站、知乎、WordPress、X/Twitter、YouTube、Telegram 等平台。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "scripting",
+    "offscreen",
+    "sidePanel",
+    "identity",
+    "alarms",
+    "cookies",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "downloads"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_title": "打开 OmniPost 发布助手（右侧面板）",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://weibo.com/*", "https://*.weibo.com/*"],
+      "js": ["src/content/weibo.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://creator.xiaohongshu.com/*"],
+      "js": ["src/content/xiaohongshu.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://member.bilibili.com/*", "https://t.bilibili.com/*"],
+      "js": ["src/content/bilibili.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://zhuanlan.zhihu.com/*", "https://www.zhihu.com/*"],
+      "js": ["src/content/zhihu.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["src/content/twitter.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://creator.douyin.com/*"],
+      "js": ["src/content/douyin.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/bridge.ts"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/content/main.ts"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OmniPost Extension Driver & Diagnostics</title>
+  <style>
+    body {
+      background: #0c0f17;
+      color: #f0f2f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      padding: 24px;
+      font-size: 13px;
+    }
+    h1 { color: #818cf8; font-size: 18px; margin-bottom: 12px; }
+    .card {
+      background: #141824;
+      border: 1px solid #2a3142;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    button {
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    button:hover { background: #818cf8; }
+    pre {
+      background: #090d15;
+      border: 1px solid #1e2433;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+      color: #34d399;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>OmniPost E2E 诊断与测试工作台</h1>
+  <div class="card">
+    <p>可在此测试 Extension Background Service Worker 通信与各平台登录态。</p>
+    <div style="margin-top: 12px;">
+      <button id="btnCheckAuth">检查全平台登录态</button>
+      <button id="btnTestDraft">模拟微博/X草稿</button>
+      <button id="btnClearLog">清空日志</button>
+    </div>
+  </div>
+  <pre id="logOutput">// 测试日志输出区域...</pre>
+  <script src="test_driver.js"></script>
+</body>
+</html>

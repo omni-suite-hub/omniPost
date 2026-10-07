@@ -1,0 +1,22 @@
+{
+  "name": "omnipost",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "npm run build --prefix packages/extension && rm -rf dist && cp -r packages/extension/dist dist",
+    "dev": "npm run dev --prefix packages/extension",
+    "typecheck": "tsc --noEmit -p packages/extension/tsconfig.json",
+    "test": "node test/run_tests.js",
+    "test:e2e": "node test/e2e/all.mjs",
+    "test:e2e:smoke": "node test/e2e/smoke.mjs",
+    "test:all": "npm test && npm run test:e2e",
+    "cli": "node packages/cli/bin/omnipost.js",
+    "mcp": "node packages/mcp-server/src/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

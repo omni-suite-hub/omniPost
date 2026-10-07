@@ -1,0 +1,12 @@
+{
+  "name": "@omnipost/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "omnipost": "./bin/omnipost.js"
+  },
+  "dependencies": {
+    "@omnipost/bridge": "workspace:*",
+    "commander": "^11.0.0"
+  }
+}
